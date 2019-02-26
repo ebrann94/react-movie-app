@@ -1,9 +1,9 @@
 import React from 'react';
 
-const SearchInput = () => (
+const SearchInput = (props) => (
     <div>
-        <form>
-            <input type="text" name="title" />
+        <form onSubmit={props.handleSubmit}>
+            <input type="text" name="query" placeholder="Search..."/>
             
         </form>
     </div>

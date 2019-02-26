@@ -3,11 +3,8 @@ import React from 'react';
 const MovieCard = (props) => {
     return (
         <div>
-            <img /*Movie Poster*/ />
-            <p>Movie Title</p>
-            <p>Year of Release</p>
-            <p>Director</p>
-            <p>Movie Overview</p>
+            <img src={`https://image.tmdb.org/t/p/original${props.posterPath}`} width="100px"/>
+            <p>{props.title}</p>
         </div>
     );
 }
