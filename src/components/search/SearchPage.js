@@ -26,11 +26,15 @@ class SearchPage extends React.Component {
                     return {
                         title: movie.title,
                         posterPath: movie.poster_path,
+                        releaseYear: new Date(movie.release_date).getFullYear(),
+                        overview: movie.overview
                     }
                 });
                 return searchResults;
             })
             .then(results => {this.setState(() => ({searchResults: results}))});
+        
+        e.target.elements.query.value = '';
     }
 
     componentDidUpdate() {

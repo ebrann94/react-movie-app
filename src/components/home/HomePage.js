@@ -1,6 +1,7 @@
 import React from 'react';
 import PopularList from './PopularList';
 import NewReleaseList from './NewReleaseList';
+import { Link } from 'react-router-dom';
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -12,6 +13,7 @@ class HomePage extends React.Component {
             newRelease: []
         }
         // this.fetchPopular = this.fetchPopular.bind(this);
+        this.fetchPopular();
     }
 
     fetchPopular() {
@@ -20,8 +22,11 @@ class HomePage extends React.Component {
             .then(data => {
                 const results = data.results.map(movie => {
                     return {
+                        movieID: movie.id,
                         title: movie.title,
-                        posterPath: movie.poster_path
+                        posterPath: movie.poster_path,
+                        releaseYear: new Date(movie.release_date).getFullYear(),
+                        overview: movie.overview
                     }
                 });
 
@@ -34,7 +39,7 @@ class HomePage extends React.Component {
     }
 
     componentDidMount() {
-        this.fetchPopular();
+        //this.fetchPopular();
     }
 
     render() {
