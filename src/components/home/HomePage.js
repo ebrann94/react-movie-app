@@ -1,6 +1,6 @@
 import React from 'react';
-import PopularList from './PopularList';
-import NewReleaseList from './NewReleaseList';
+import MovieList from '../shared/MovieList';
+import { processResults } from '../../utils';
 import { Link } from 'react-router-dom';
 
 class HomePage extends React.Component {
@@ -12,25 +12,14 @@ class HomePage extends React.Component {
             popularMovies: [],
             newRelease: []
         }
-        // this.fetchPopular = this.fetchPopular.bind(this);
-        this.fetchPopular();
     }
 
     fetchPopular() {
         fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${this.state.apiKey}&language=en-US&page=1`)
             .then(res => res.json())
-            .then(data => {
-                const results = data.results.map(movie => {
-                    return {
-                        movieID: movie.id,
-                        title: movie.title,
-                        posterPath: movie.poster_path,
-                        releaseYear: new Date(movie.release_date).getFullYear(),
-                        overview: movie.overview
-                    }
-                });
-
-                this.setState(() => ({popularMovies: results}));
+            .then(processResults)
+            .then(results => {
+                this.setState(() => ({popularMovies: results}))
             });
     }   
 
@@ -39,15 +28,14 @@ class HomePage extends React.Component {
     }
 
     componentDidMount() {
-        //this.fetchPopular();
+        this.fetchPopular();
     }
 
     render() {
         return (
             <div>
                 <h1>Home Page!</h1>
-                <PopularList popularMovies={this.state.popularMovies} />
-                <NewReleaseList />
+                <MovieList list={this.state.popularMovies} />
             </div>
         )
     }

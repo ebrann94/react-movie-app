@@ -22,7 +22,7 @@ class AppRouter extends React.Component {
                     <Header />
                     <Switch>
                         <Route path="/" component={HomePage} exact={true} apiKey={this.state.apiKey} />
-                        <Route path="/search" component={SearchPage} apiKey={this.state.apiKey} />
+                        <Route path="/search/:query" component={SearchPage} apiKey={this.state.apiKey} />
                         <Route path="/movie/:id" component={MoviePage} apiKey={this.state.apiKey} />
                     </Switch>
                 </div>

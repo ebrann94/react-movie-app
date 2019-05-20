@@ -1,10 +1,11 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import SearchInput from './SearchInput';
 
 const Header = () => (
     <header>
         <NavLink to="/" exact={true} >Home</NavLink>
-        <NavLink to="/search" >Search</NavLink>
+        <SearchInput />
     </header>
 );
 

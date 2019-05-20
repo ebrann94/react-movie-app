@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieCard from '../MovieCard';
+import MovieCard from '../shared/MovieCard';
 
 class MoviePage extends React.Component {
     constructor(props) {
