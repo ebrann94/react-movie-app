@@ -4,8 +4,11 @@ import SearchInput from './SearchInput';
 
 const Header = () => (
     <header>
-        <NavLink to="/" exact={true} >Home</NavLink>
         <SearchInput />
+        <div>
+            <NavLink to="/">Popular Movies</NavLink>
+            <NavLink to="/new-releases">New Releases</NavLink>
+        </div>
     </header>
 );
 

@@ -8,14 +8,12 @@ class HomePage extends React.Component {
         super(props);
 
         this.state = {
-            apiKey: 'a337cb9ccaa0c3b43011d85ff6246ced',
-            popularMovies: [],
-            newRelease: []
+            popularMovies: []
         }
     }
 
     fetchPopular() {
-        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${this.state.apiKey}&language=en-US&page=1`)
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${this.props.apiKey}&language=en-US&page=1`)
             .then(res => res.json())
             .then(processResults)
             .then(results => {

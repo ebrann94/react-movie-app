@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 
 const MovieCard = (props) => {
     return (
-        <div>
-            <p>{props.title} ({props.releaseYear})</p>
-            {props.posterPath && <img src={`https://image.tmdb.org/t/p/original${props.posterPath}`} width="100px"/>}
-            <div className="extra-info">
-                <p>Overview: {props.overview}</p>
+        <div className="movie">
+            <h3 className="movie__title">{props.title} <span className="movie__year">({props.releaseYear})</span></h3>
+            <div className="movie__info-wrapper">
+                {props.posterPath && <img src={`https://image.tmdb.org/t/p/original${props.posterPath}`} className="movie__poster"/>}
+                <div className="extra-info">
+                    <p className="movie__overview">{props.overview}</p>
+                </div>
             </div>
-            <Link to={`/movie/${props.movieID}`}>More Info</Link>
+            <Link to={`/movie/${props.movieID}`} className="movie__more-info">More Info</Link>
         </div>
 
     );

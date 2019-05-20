@@ -7,23 +7,21 @@ class SearchPage extends React.Component {
         super(props);
 
         this.state = {
-            apiKey: 'a337cb9ccaa0c3b43011d85ff6246ced',
-            query: props.match.params.query,
             searchResults: []
         }
     }
 
     fetchResults() {
-        const searchQuery = this.state.query;
+        const searchQuery = this.props.match.params.query;
 
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${this.state.apiKey}&language=en-US&query=${searchQuery}&page=1`)
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${this.props.apiKey}&language=en-US&query=${searchQuery}&page=1`)
             .then(res => res.json())
             .then(processResults)
             .then(results => {this.setState(() => ({searchResults: results}))});
     }
 
     componentDidMount() {
-        // fetchresults();
+        // this.fetchresults();
     }
 
     componentDidUpdate() {

@@ -6,16 +6,13 @@ class MoviePage extends React.Component {
         super(props);
 
         this.state = {
-            apiKey: 'a337cb9ccaa0c3b43011d85ff6246ced',
             movieID: props.match.params.id,
-            movieDetails: {
-
-            }
+            movieDetails: {}
         }
     }
 
     fetchMovieDetails() {
-        fetch(`https://api.themoviedb.org/3/movie/${this.state.movieID}?api_key=${this.state.apiKey}&language=en-US`)
+        fetch(`https://api.themoviedb.org/3/movie/${this.state.movieID}?api_key=${this.props.apiKey}&language=en-US`)
             .then(res => res.json())
             .then(data => {
                 const newMovieDetails = {
@@ -35,7 +32,7 @@ class MoviePage extends React.Component {
     }
 
     fetchCredits() {
-        fetch(`https://api.themoviedb.org/3/movie/${this.state.movieID}/credits?api_key=${this.state.apiKey}`)
+        fetch(`https://api.themoviedb.org/3/movie/${this.state.movieID}/credits?api_key=${this.props.apiKey}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -46,7 +43,7 @@ class MoviePage extends React.Component {
                     }
                 });
 
-                let director = '';
+                let director;
                 const crew = data.crew.map(({name, job}) => {
                     if (job.toLowerCase() === 'director') director = name;
 

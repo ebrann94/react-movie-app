@@ -3,7 +3,7 @@ import MovieCard from './MovieCard'
 
 const MovieList = ({ list }) => {
     return (
-        <div>
+        <div className="movie-list">
             {
                 list.map(movie => {
                     return <MovieCard key={movie.movieID} {...movie} />

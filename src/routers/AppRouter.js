@@ -5,30 +5,37 @@ import HomePage from '../components/home/HomePage';
 import SearchPage from '../components/search/SearchPage';
 import MoviePage from '../components/movie/MoviePage';
 
-class AppRouter extends React.Component {
-    constructor() {
-        super();
+const AppRouter = () => {
+    const apiKey = 'a337cb9ccaa0c3b43011d85ff6246ced';
 
-        this.state = {
-            apiKey: 'a337cb9ccaa0c3b43011d85ff6246ced',
-            currentMovieId: ''
-        }
-    }
-
-    render() {
-        return (
-            <BrowserRouter>
-                <div>
-                    <Header />
-                    <Switch>
-                        <Route path="/" component={HomePage} exact={true} apiKey={this.state.apiKey} />
-                        <Route path="/search/:query" component={SearchPage} apiKey={this.state.apiKey} />
-                        <Route path="/movie/:id" component={MoviePage} apiKey={this.state.apiKey} />
-                    </Switch>
-                </div>
-            </BrowserRouter>
-        );
-    }
+    return (
+        <BrowserRouter>
+            <div>
+                <Header />
+                <Switch>
+                    <Route 
+                        path="/" 
+                        exact={true}
+                        render={routeprops => (
+                            <HomePage {...routeprops} apiKey={apiKey} />
+                        )} 
+                    />
+                    <Route 
+                        path="/search/:query" 
+                        render={routeprops => (
+                            <SearchPage {...routeprops} apiKey={apiKey} />
+                        )}  
+                    />
+                    <Route 
+                        path="/movie/:id"
+                        render={routeprops => (
+                            <MoviePage {...routeprops} apiKey={apiKey} />
+                        )} 
+                    />
+                </Switch>
+            </div>
+        </BrowserRouter>
+    );
 };
 
 export default AppRouter;
