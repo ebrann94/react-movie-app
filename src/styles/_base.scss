@@ -2,9 +2,17 @@
     box-sizing: border-box;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
 body {
     margin: 0;
-    font-family: Helevetica, Arial, sans-serif;
+    // font-family: Helevetica, Arial, sans-serif;
+    font-family: 'Raleway', sans-serif;
 
     color: $text-grey;
+}
+
+.readable {
+    line-height: 1.5rem;
+    max-width: 540px;
 }

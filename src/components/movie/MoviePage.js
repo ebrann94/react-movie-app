@@ -1,5 +1,6 @@
 import React from 'react';
-import MovieCard from '../shared/MovieCard';
+import CreditListItem from './CreditListItem';
+import CreditList from './CreditList';
 
 class MoviePage extends React.Component {
     constructor(props) {
@@ -7,7 +8,9 @@ class MoviePage extends React.Component {
 
         this.state = {
             movieID: props.match.params.id,
-            movieDetails: {}
+            movieDetails: {},
+            cast: [],
+            crew: []
         }
     }
 
@@ -35,21 +38,24 @@ class MoviePage extends React.Component {
         fetch(`https://api.themoviedb.org/3/movie/${this.state.movieID}/credits?api_key=${this.props.apiKey}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                const cast = data.cast.map(({name, character}) => {
+                // console.log(data);
+                const cast = data.cast.map(({ name, character, profile_path, id }) => {
                     return {
                         name,
-                        character
+                        role: character,
+                        profilePath: profile_path,
+                        id
                     }
                 });
 
                 let director;
-                const crew = data.crew.map(({name, job}) => {
+                const crew = data.crew.map(({ name, job, id }) => {
                     if (job.toLowerCase() === 'director') director = name;
 
                     return {
                         name,
-                        job
+                        role: job,
+                        id 
                     }
                 });
 
@@ -67,41 +73,34 @@ class MoviePage extends React.Component {
     componentDidMount() {
         this.fetchMovieDetails();
         this.fetchCredits();
+
+        window.scroll(0, 0);
     }
 
     componentDidUpdate() {
-        console.log(this.state);
+        // console.log(this.state);
     }
 
     render() {
         return (
-            <div>
-                <h1>Movie Page!</h1>
-                <MovieCard {...this.state.movieDetails} />
-                <p>Director: {this.state.movieDetails.director}</p>
+            <div className="moviepage-container">
+                <div>
+                    <h1>{this.state.movieDetails.title} ({this.state.movieDetails.releaseYear})</h1>
+                    <div className="moviepage__info-container">
+                        <img src={`https://image.tmdb.org/t/p/original${this.state.movieDetails.posterPath}`} className="moviepage__image"/>
+                        <div className="moviepage__description">
+                            <p className="readable">{this.state.movieDetails.overview}</p>
+                            <p><strong>Director:</strong>   {this.state.movieDetails.director}</p>
+                        </div>
+                    </div>
+                </div>
                 <div className="cast-list">
                     <h3>Cast</h3>
-                    {this.state.cast &&
-                        <ul>
-                            {
-                                this.state.cast.map(({name, character}, index) => (
-                                    <li key={index}>{name}: {character}</li>
-                                ))
-                            }
-                        </ul>
-                    }
+                    <CreditList list={this.state.cast} />
                 </div>
                 <div className="crew-list">
                     <h3>Crew</h3>
-                    {this.state.crew &&
-                        <ul>
-                            {
-                                this.state.crew.map(({name, job}, index) => (
-                                    <li key={index}>{name}: {job}</li> 
-                                ))
-                            }
-                        </ul>
-                    }
+                    <CreditList list={this.state.crew} />
                 </div>
             </div>
         );

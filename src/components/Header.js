@@ -9,8 +9,8 @@ const Header = () => (
             <SearchInput />
         </div>
         <div className="header__links-container">
-            <NavLink to="/" className="header__link">Popular Movies</NavLink>
-            <NavLink to="/new-releases" className="header__link">New Releases</NavLink>
+            <NavLink to="/" className="header__link">Popular</NavLink>
+            <NavLink to="/new-releases" className="header__link">Upcoming</NavLink>
         </div>
     </header>
 );

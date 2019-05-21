@@ -38,6 +38,12 @@
 .movie__more-info {
     color: inherit;
     float: right;
+
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 
