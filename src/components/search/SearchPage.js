@@ -21,20 +21,23 @@ class SearchPage extends React.Component {
     }
 
     componentDidMount() {
-        // this.fetchresults();
+        this.fetchResults();
     }
 
-    componentDidUpdate() {
-        // console.log(this.state);
+    componentDidUpdate(prevProps) {
+        const prevQuery = prevProps.match.params.query;
+        const currentQuery = this.props.match.params.query;
+
+        if (prevQuery !== currentQuery) {
+            this.fetchResults();
+        }
     }
 
     render() {
         return(
             <div>
-                <h1>Search Page!</h1>
-                <div>
-                    <MovieList list={this.state.results} />
-                </div>
+                <h1>Results for: {this.props.match.params.query}</h1>
+                <MovieList list={this.state.searchResults} />
             </div>
         );
     }

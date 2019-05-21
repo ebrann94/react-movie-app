@@ -32,7 +32,7 @@ class HomePage extends React.Component {
     render() {
         return (
             <div>
-                <h1>Home Page!</h1>
+                <h1>Popular Movies</h1>
                 <MovieList list={this.state.popularMovies} />
             </div>
         )

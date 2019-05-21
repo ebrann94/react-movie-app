@@ -3,7 +3,8 @@
     margin: 16px 0;
 
     box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 0 8px 8px 0;
+    border-left: 3px solid $highlight-blue;
 }
 
 .movie__title {

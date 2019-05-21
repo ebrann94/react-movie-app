@@ -1,0 +1,30 @@
+header {
+    background: rgba(0, 0, 0, 0.8);
+
+    border-bottom: 3px solid $highlight-blue;
+    color: white;
+
+    padding: 8px;
+}
+
+.header__top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__logo {
+    margin: 0;
+}
+
+.header__link {
+    color: white;
+    margin:  0 8px 0 0;
+}
+
+.search__input {
+    width: 300px;
+    padding: 8px;
+
+    border-radius: 8px;
+    border: rgba(0, 0, 0, 0.1) solid 1px;
+}
