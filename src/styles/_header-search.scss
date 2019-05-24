@@ -1,10 +1,16 @@
 header {
-    background: rgba(0, 0, 0, 0.8);
+    // height: 100px;
+    width: 100%;
+    background: rgb(41, 41, 41);
 
     border-bottom: 3px solid $highlight-blue;
     color: white;
 
-    padding: 8px;
+    padding: 8px 8px 0 8px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .header__top {
@@ -16,9 +22,20 @@ header {
     margin: 0;
 }
 
+.header__links-container {
+    // border: transparent solid 1px;
+}
+
 .header__link {
     color: white;
-    margin:  0 8px 0 0;
+    margin-top: 8px;
+
+    padding: 8px 8px;
+    display: inline-block;
+}
+
+.header__link--active {
+    background: grey;
 }
 
 .search__input {

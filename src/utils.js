@@ -5,7 +5,8 @@ export const processResults = (data) => {
             title: movie.title,
             posterPath: movie.poster_path,
             releaseYear: new Date(movie.release_date).getFullYear(),
-            overview: movie.overview
+            overview: movie.overview,
+            voteAverage: movie.vote_average
         }
     });
 }

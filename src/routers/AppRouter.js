@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import Header from '../components/Header';
 import HomePage from '../components/home/HomePage';
+import ResultsList from '../components/shared/ResultsList';
 import SearchPage from '../components/search/SearchPage';
 import MoviePage from '../components/movie/MoviePage';
 
@@ -16,9 +17,33 @@ const AppRouter = () => {
                     <Route 
                         path="/" 
                         exact={true}
-                        render={routeprops => (
-                            <HomePage {...routeprops} apiKey={apiKey} />
-                        )} 
+                        render={routeProps => (
+                            <ResultsList 
+                                {...routeProps} 
+                                url={`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`} 
+                                title="Popular Movies"
+                            />
+                        )}
+                    />
+                    <Route 
+                        path="/upcoming" 
+                        render={routeProps => (
+                            <ResultsList 
+                                {...routeProps} 
+                                url={`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=1`} 
+                                title="Upcoming Movies"
+                            />
+                        )}
+                    />
+                    <Route 
+                        path="/top-rated" 
+                        render={routeProps => (
+                            <ResultsList 
+                                {...routeProps} 
+                                url={`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`} 
+                                title="Top Rated Movies"
+                            />
+                        )}
                     />
                     <Route 
                         path="/search/:query" 
