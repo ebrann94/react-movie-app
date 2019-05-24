@@ -7,6 +7,11 @@
     border-left: 3px solid $highlight-blue;
 }
 
+.movie__header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .movie__title {
     font-weight: bold;
     font-size: 1.5rem;
@@ -16,6 +21,19 @@
 
 .movie__year {
     font-weight: lighter;
+}
+
+.movie__vote {
+    margin: 0;
+    margin-right: 8px;
+    display: inline-block;
+
+    vertical-align: middle;
+}
+
+.movie__gold-star {
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .movie__info-wrapper {
