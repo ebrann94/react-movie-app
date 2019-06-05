@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { processResults } from '../../utils';
+import { processResults, handleJSONResponse } from '../../utils';
 import MovieList from './MovieList';
 
 class ResultsList extends Component {
@@ -7,15 +7,17 @@ class ResultsList extends Component {
         super(props);
 
         this.state = {
-            results: []
+            results: [],
+            error: ''
         }
     }
 
     fetchResults() {
         fetch(this.props.url)
-            .then(res => res.json())
+            .then(handleJSONResponse)
             .then(processResults)
-            .then(results => this.setState({ results }));
+            .then(results => this.setState({ results }))
+            .catch(e => this.setState({ error: 'Unable to connect to server' }));
     }
 
     componentDidMount() {
@@ -31,7 +33,7 @@ class ResultsList extends Component {
     render() {
         return (
             <div className="results-list-container">
-                <h1>{this.props.title}</h1>
+                <h1 className="results__title">{this.props.title}</h1>
                 <MovieList list={this.state.results}/>
             </div>
         )

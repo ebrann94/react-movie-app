@@ -1,8 +1,8 @@
 .movie {
     padding: 16px;
-    margin: 16px 0;
+    margin: 0 0 16px 0;
 
-    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.1);
     border-radius: 0 8px 8px 0;
     border-left: 3px solid $highlight-blue;
 }
@@ -20,12 +20,12 @@
 }
 
 .movie__year {
-    font-weight: lighter;
+    font-weight: 300;
+    //color: lighten($text-grey, 50%);
 }
 
 .movie__vote {
-    margin: 0;
-    margin-right: 8px;
+    margin: 0 8px 0 0;
     display: inline-block;
 
     vertical-align: middle;
@@ -49,6 +49,7 @@
     margin: 0;
     padding: 0 16px;
 
+    font-size: 0.9rem;
     line-height: 1.5rem;
     max-width: 540px;
 }

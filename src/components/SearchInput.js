@@ -6,13 +6,11 @@ const SearchInput = ({ history, location }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (location.pathname.includes('search')) {
+        if (searchQuery.length > 0) {
             history.push(`/search/${searchQuery}`);
-        } else {
-            history.push(`/search/${searchQuery}`);
+            setQuery('');
         }
-        setQuery('');
-    }
+    };
 
     return (
         <div className="search-container">
@@ -25,7 +23,12 @@ const SearchInput = ({ history, location }) => {
                     onChange={(e) => setQuery(e.target.value)}
                     className="search__input"
                 />
-                <input type="submit" name="submit" value="Search" />
+                <input
+                    type="submit"
+                    name="submit"
+                    value="Search"
+                    className="search__submit-btn"
+                />
             </form>
         </div>
     ); 

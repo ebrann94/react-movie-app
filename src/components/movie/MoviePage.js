@@ -1,5 +1,4 @@
 import React from 'react';
-import CreditListItem from './CreditListItem';
 import CreditList from './CreditList';
 
 class MoviePage extends React.Component {
@@ -18,12 +17,14 @@ class MoviePage extends React.Component {
         fetch(`https://api.themoviedb.org/3/movie/${this.state.movieID}?api_key=${this.props.apiKey}&language=en-US`)
             .then(res => res.json())
             .then(data => {
+                console.log(data.runtime);
                 const newMovieDetails = {
                     title: data.title,
                     posterPath: data.poster_path,
                     releaseYear: new Date(data.release_date).getFullYear(),
-                    overview: data.overview
-                }
+                    overview: data.overview,
+                    runtime: data.runtime,
+                };
 
                 this.setState((prevState) => ({
                     movieDetails: {
@@ -84,13 +85,16 @@ class MoviePage extends React.Component {
     render() {
         return (
             <div className="moviepage-container">
-                <div>
-                    <h1>{this.state.movieDetails.title} ({this.state.movieDetails.releaseYear})</h1>
+                <div className="moviepage__top-container">
+                    <h1 className="moviepage__title">{this.state.movieDetails.title} ({this.state.movieDetails.releaseYear})</h1>
                     <div className="moviepage__info-container">
                         <img src={`https://image.tmdb.org/t/p/original${this.state.movieDetails.posterPath}`} className="moviepage__image"/>
                         <div className="moviepage__description">
                             <p className="readable">{this.state.movieDetails.overview}</p>
-                            <p><strong>Director:</strong>   {this.state.movieDetails.director}</p>
+                            <div className="moviepage__principal-cast">
+                                <p><strong>Director:</strong> {this.state.movieDetails.director}</p>
+                                <p><strong>Runtime:</strong> {this.state.movieDetails.runtime}mins</p>
+                            </div>
                         </div>
                     </div>
                 </div>

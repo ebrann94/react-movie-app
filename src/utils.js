@@ -9,4 +9,12 @@ export const processResults = (data) => {
             voteAverage: movie.vote_average
         }
     });
-}
+};
+
+export const handleJSONResponse = (res) => {
+    if (res.ok) {
+        return res.json();
+    } else {
+        throw new Error();
+    }
+};

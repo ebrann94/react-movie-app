@@ -51,7 +51,7 @@ class CreditList extends React.Component {
                     onClick={() => this.setState(prevState => ({ isOpen: !prevState.isOpen }))}
                     className="credit-list__open-btn"
                 >
-                    {this.state.isOpen ? 'Less' : 'More'}
+                    Show {this.state.isOpen ? 'Less' : 'More'}
                 </button>
             </div>
         )

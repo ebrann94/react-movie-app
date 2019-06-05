@@ -19,10 +19,6 @@ class HomePage extends React.Component {
             .then(results => {
                 this.setState(() => ({popularMovies: results}))
             });
-    }   
-
-    fetchNewReleases() {
-
     }
 
     componentDidMount() {

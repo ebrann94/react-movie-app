@@ -1,5 +1,5 @@
 header {
-    // height: 100px;
+    height: 100px;
     width: 100%;
     background: rgb(41, 41, 41);
 
@@ -11,6 +11,8 @@ header {
     position: fixed;
     top: 0;
     left: 0;
+
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .header__top {
@@ -38,10 +40,34 @@ header {
     background: grey;
 }
 
+.search-container {
+    padding: 4px;
+    form {
+        position: relative;
+        height: 100%;
+
+        display: flex;
+
+    }
+}
+
 .search__input {
     width: 300px;
+    height: 100%;
     padding: 8px;
 
-    border-radius: 8px;
-    border: rgba(0, 0, 0, 0.1) solid 1px;
+    border-radius: 4px 0 0 4px;
+    //border: rgba(0, 0, 0, 0.1) solid 1px;
+    border: none;
+    //display: inline-block;
+}
+
+.search__submit-btn {
+    height: 100%;
+    border: none;
+    border-radius: 0 4px 4px 0;
+
+    //display: inline-block;
+    background: $highlight-blue;
+    color: white;
 }

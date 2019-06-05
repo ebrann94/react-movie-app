@@ -1,10 +1,15 @@
 .moviepage-container {
-    padding: 0 16px;
+    padding: 0 32px;
+    border: transparent 0 solid;
+}
 
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
+.moviepage__title {
+    margin: 16px 0 24px 0;
+    //margin: 0;
+}
 
+.moviepage__top-container {
+    border: transparent 1px solid;
 }
 
 .moviepage__info-container {
@@ -19,8 +24,12 @@
     padding: 0 16px;
 
     p {
-        margin: 0;
+        margin: 8px;
     }
+}
+
+.moviepage__principal-cast {
+    margin: 16px 0;
 }
 
 .moviepage__credit-list {
