@@ -6,31 +6,34 @@ const Header = () => (
     <header>
         <div className="header__top">
             <h1 className="header__logo">TheMovieDB</h1>
-            <SearchInput />
+
         </div>
-        <div className="header__links-container">
-            <NavLink 
-                to="/" 
-                className="header__link" 
-                activeClassName="header__link--active" 
-                exact={true}
-            >
-                Popular
-            </NavLink>
-            <NavLink 
-                to="/upcoming" 
-                className="header__link" 
-                activeClassName="header__link--active"
-            >
-                Upcoming
-            </NavLink>
-            <NavLink 
-                to="/top-rated" 
-                className="header__link" 
-                activeClassName="header__link--active"
-            >
-                Top Rated
-            </NavLink>
+        <div className="header__bottom">
+            <div className="header__links-container">
+                <NavLink
+                    to="/"
+                    className="header__link"
+                    activeClassName="header__link--active"
+                    exact={true}
+                >
+                    Popular
+                </NavLink>
+                <NavLink
+                    to="/upcoming"
+                    className="header__link"
+                    activeClassName="header__link--active"
+                >
+                    Upcoming
+                </NavLink>
+                <NavLink
+                    to="/top-rated"
+                    className="header__link"
+                    activeClassName="header__link--active"
+                >
+                    Top Rated
+                </NavLink>
+            </div>
+            <SearchInput />
         </div>
     </header>
 );

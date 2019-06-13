@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import Header from '../components/Header';
-import HomePage from '../components/home/HomePage';
 import ResultsList from '../components/shared/ResultsList';
 import SearchPage from '../components/search/SearchPage';
 import MoviePage from '../components/movie/MoviePage';
@@ -47,14 +46,14 @@ const AppRouter = () => {
                     />
                     <Route 
                         path="/search/:query" 
-                        render={routeprops => (
-                            <SearchPage {...routeprops} apiKey={apiKey} />
+                        render={routeProps => (
+                            <SearchPage {...routeProps} apiKey={apiKey} />
                         )}  
                     />
                     <Route 
                         path="/movie/:id"
-                        render={routeprops => (
-                            <MoviePage {...routeprops} apiKey={apiKey} />
+                        render={routeProps => (
+                            <MoviePage {...routeProps} apiKey={apiKey} />
                         )} 
                     />
                 </Switch>

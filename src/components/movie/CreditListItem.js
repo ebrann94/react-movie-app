@@ -13,6 +13,6 @@ const CreditListItem = ({ name, role, id, even }) => {
             <span className="credit-list-item__name">{name}</span> <span className="credit-list-item__role">{role}</span>
         </li>
     );
-}
+};
 
 export default CreditListItem;
