@@ -1,6 +1,6 @@
-#React App for Browsing The Movie DB
+# The MovieDB Clone
 
-This is a simple react app for browsing movies in TMDB (The Movie DataBase).
-It displays the current popular movies and also has search functionality. 
-
-Built with React and making use of React Router.
+A simple react app for browsing data from The MovieDB.
+Users can view the popular and highest rated movies or search for specific movies using the search bar.
+The project uses `react-router` to create multiple pages.
+A live demo can be found [here.](https://ebrann-movie.herokuapp.com/)
